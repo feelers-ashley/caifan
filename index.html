@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Emoji2Caifan</title>
+    <!--  P5    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <!--  ML5    -->
+    <script src="https://unpkg.com/ml5@0.5.0/dist/ml5.min.js" type="text/javascript"></script>
+  </head>
+  <body style="font-family:monaco; font-weight: bold">
+    <h1>Emoji2Caifan</h1>
+    <p>Click on the emojis to build your caifan.</p>
+    <p>When you're finished, click 'Transfer'.</p>
+    <p>Your caifan will appear in a few seconds.</p>
+    <p>Click 'Clear' to clear the canvas and try again.</p>
+    <div class="flex">
+      <div>
+        <div id="emojiContainer" class="flex flex-space-between">
+          <img id="btn0" src="images/emojis/food0.png" width="50" height="50">
+          <img id="btn1" src="images/emojis/food1.png" width="50" height="50">
+          <img id="btn2" src="images/emojis/food2.png" width="50" height="50">
+          <img id="btn3" src="images/emojis/food3.png" width="50" height="50">
+          <img id="btn4" src="images/emojis/food4.png" width="50" height="50">
+          <img id="btn5" src="images/emojis/food5.png" width="50" height="50"><br/>
+          <img id="btn6" src="images/emojis/food6.png" width="50" height="50">
+          <img id="btn7" src="images/emojis/food7.png" width="50" height="50">
+          <img id="btn8" src="images/emojis/food8.png" width="50" height="50">
+          <img id="btn9" src="images/emojis/food9.png" width="50" height="50">
+          <img id="btn10" src="images/emojis/food10.png" width="50" height="50">
+          <img id="btn11" src="images/emojis/food11.png" width="50" height="50">
+        </div>
+        <div id="canvasContainer"></div>
+        <div id="btnContainer" class="flex flex-space-between">
+          <button id="clearBtn" style="font-family: monospace">Clear</button>
+          <button id="randomBtn" style="font-family: monospace">Random</button>
+          <button id="transferBtn" style="font-family: monospace">Transfer</button>
+        </div>
+      </div>
+      <p id="status">Loading Model... Please Wait...</p>
+      <div id="output"></div>
+    </div>
+    <script src="sketch.js"></script>
+  </body> 
+</html>
