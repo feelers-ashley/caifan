@@ -3,25 +3,25 @@ Feelers-Ashley / Emoji2Caifan
 */
 
 let inputImgs = [];
-let emojiImgs = [];
+let foodImgs = [];
 let inputCanvas, outputContainer, statusMsg;
 let randomBtn, clearBtn, transferBtn;
 let emojiBtns = [];
 
 // transfer img must be multiple of 256
-const SIZE = 256;
+const SIZE = 512;
 
 function setup() {
     // create a 256x256 canvas
     inputCanvas = createCanvas(SIZE, SIZE);
     inputCanvas.class('border-box').parent('canvasContainer');
 
-    // load emoji / input imgs
-    for (let i = 0; i < 12; i++) {
-        emojiImgs[i] = loadImage('images/emojis/food' + i + '.png', clearCanvas);
+    // load food / input imgs
+    for (let i = 0; i < 11; i++) {
+        foodImgs[i] = loadImage('images/foods/food' + i + '.png', clearCanvas);
     }
-    for (let i = 0; i < 3; i++) {
-        inputImgs[i] = loadImage('images/inputs/' + i + '.png', drawCaifan);
+    for (let i = 0; i < 15; i++) {
+        inputImgs[i] = loadImage('images/inputs/input' + i + '.png', drawCaifan);
     }
 
     // selcect containers / elements
@@ -40,8 +40,6 @@ function setup() {
     let btn7 = select('#btn7');
     let btn8 = select('#btn8');
     let btn9 = select('#btn9');
-    let btn10 = select('#btn10');
-    let btn11 = select('#btn11');
 
     // add p5 elements to emoji button array
     emojiBtns.push(btn0);
@@ -54,8 +52,6 @@ function setup() {
     emojiBtns.push(btn7);
     emojiBtns.push(btn8);
     emojiBtns.push(btn9);
-    emojiBtns.push(btn10);
-    emojiBtns.push(btn11);
 
     // attach mousePressed event to buttons
     randomBtn.mousePressed(function () {
@@ -64,9 +60,9 @@ function setup() {
     clearBtn.mousePressed(function () {
         clearCanvas();
     });
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 10; i++) {
         emojiBtns[i].mousePressed(function () {
-            drawEmoji(i);
+            drawFood(i);
         })
     }
 
@@ -77,8 +73,13 @@ function setup() {
 
 function clearCanvas() {
     background(97, 103, 115);
+    push();
     noStroke();
     ellipse(width / 2, height / 2, width);
+    imageMode(CENTER);
+    translate(0.55 * width, 0.7 * height);
+    image(foodImgs[10], 0, 0, 0.6 * SIZE, 0.6 * SIZE);
+    pop();
 }
 
 function drawImage() {
@@ -87,27 +88,29 @@ function drawImage() {
     image(inputImg, 0, 0);
 }
 
-function drawEmoji(foodNo) {
-    let foodSize = 50;
-    let foodPadL = width / 2 - 0.35 * width;
-    let foodPadR = width / 2 + 0.35 * width - foodSize;
-    let foodPadT = height / 2 - 0.35 * width;
-    let foodPadB = height / 2 + 0.35 * width - foodSize;
-    if (foodNo >= 0 && foodNo < 6) {
-        image(emojiImgs[foodNo], random(foodPadL, foodPadR), random(foodPadT, foodPadB), foodSize, foodSize);
-    } else {
-        push();
-        foodSize = 80
-        image(emojiImgs[foodNo], random(foodPadL, foodPadR), random(foodPadT, foodPadB), foodSize, foodSize);
-        pop();
-    }
+function drawFood(foodNo) {
+    push();
+    let foodSize = 0.4 * SIZE;
+    let foodPadL = width / 2 - 0.50 * width + foodSize / 2;
+    let foodPadR = width / 2 + 0.50 * width - foodSize / 2;
+    let foodPadT = height / 2 - 0.50 * width + foodSize / 2;
+    let foodPadB = height / 2 + 0.35 * width - foodSize / 2;
+    let foodX = random(foodPadL, foodPadR);
+    let foodY = random(foodPadT, foodPadB);
+    translate(foodX, foodY);
+    imageMode(CENTER);
+    push();
+    rotate(random(0, PI))
+    image(foodImgs[foodNo], 0, 0, foodSize, foodSize);
+    pop();
+    pop();
 }
 
 function drawCaifan() {
     // initialise pix2pix method with pre-trained caifan model
-    ml5.pix2pix('models/caifan1000_BtoA.pict').ready.then((model) => {
+    ml5.pix2pix('models/caifan2000_BtoA.pict').ready.then((model) => {
         // show 'Model Loaded!' message
-        statusMsg.html('Model Loaded!');
+        statusMsg.html("click [cook] when you're <br/> happy with your caifan");
 
         // attach mousePressed event to the button
         transferBtn.mousePressed(function () {
@@ -118,7 +121,7 @@ function drawCaifan() {
 
 async function transfer(pix2pix) {
     declareStaus = new Promise((resolve, reject) => {
-        statusMsg.html('Applying Style Transfer...');
+        statusMsg.html('... cooking your caifan ... <br/> ... please wait ...');
         setTimeout(resolve, 10)
     })
     await declareStaus;
@@ -131,6 +134,8 @@ async function transfer(pix2pix) {
         outputContainer.html('');
         // create img from result
         createImg(result.src).class('border-box').parent('output');
-        statusMsg.html('Done!');
+        statusMsg.html('~ done ~ <br/> click [clear] to build a new caifan <br/> click [random] for a random caifan');
     });
+
+    statusMsg.html('');
 }
