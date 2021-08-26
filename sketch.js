@@ -18,9 +18,61 @@ function setup() {
 
     // load food / input imgs
     for (let i = 0; i < 11; i++) {
-        foodImgs[i] = loadImage('images/foods/food' + i + '.png', clearCanvas);
+        foodImgs[i] = [];
+        if (i == 0) {
+            for (let j = 0; j < 4; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+        } else if (i == 1) {
+            for (let j = 0; j < 7; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+
+        } else if (i == 2) {
+            for (let j = 0; j < 2; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+
+        } else if (i == 3) {
+            for (let j = 0; j < 5; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+
+        } else if (i == 4) {
+            for (let j = 0; j < 3; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+
+        } else if (i == 5) {
+            for (let j = 0; j < 5; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+
+        } else if (i == 6) {
+            for (let j = 0; j < 5; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+
+        } else if (i == 7) {
+            for (let j = 0; j < 6; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+
+        } else if (i == 8) {
+            for (let j = 0; j < 4; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+
+        } else if (i == 9) {
+            for (let j = 0; j < 5; j++) {
+                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+            }
+
+        } else if (i == 10) {
+            foodImgs[i] = loadImage('images/foods/food' + i + '.png', clearCanvas);
+        }
     }
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 14; i++) {
         inputImgs[i] = loadImage('images/inputs/input' + i + '.png', drawCaifan);
     }
 
@@ -73,6 +125,7 @@ function setup() {
 
 function clearCanvas() {
     background(97, 103, 115);
+    randomSeed(216);
     push();
     noStroke();
     ellipse(width / 2, height / 2, width);
@@ -90,6 +143,7 @@ function drawImage() {
 
 function drawFood(foodNo) {
     push();
+    let foodVer = foodImgs[foodNo][int(random(foodImgs[foodNo].length))];
     let foodSize = 0.4 * SIZE;
     let foodPadL = width / 2 - 0.50 * width + foodSize / 2;
     let foodPadR = width / 2 + 0.50 * width - foodSize / 2;
@@ -101,7 +155,7 @@ function drawFood(foodNo) {
     imageMode(CENTER);
     push();
     rotate(random(0, PI))
-    image(foodImgs[foodNo], 0, 0, foodSize, foodSize);
+    image(foodVer, 0, 0, foodSize, foodSize);
     pop();
     pop();
 }
