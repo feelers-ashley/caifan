@@ -20,11 +20,11 @@ function setup() {
     for (let i = 0; i < 11; i++) {
         foodImgs[i] = [];
         if (i == 0) {
-            for (let j = 0; j < 4; j++) {
+            for (let j = 0; j < 3; j++) {
                 foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
             }
         } else if (i == 1) {
-            for (let j = 0; j < 7; j++) {
+            for (let j = 0; j < 4; j++) {
                 foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
             }
 
@@ -34,7 +34,7 @@ function setup() {
             }
 
         } else if (i == 3) {
-            for (let j = 0; j < 5; j++) {
+            for (let j = 0; j < 3; j++) {
                 foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
             }
 
@@ -44,17 +44,17 @@ function setup() {
             }
 
         } else if (i == 5) {
-            for (let j = 0; j < 5; j++) {
+            for (let j = 0; j < 4; j++) {
                 foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
             }
 
         } else if (i == 6) {
-            for (let j = 0; j < 5; j++) {
+            for (let j = 0; j < 4; j++) {
                 foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
             }
 
         } else if (i == 7) {
-            for (let j = 0; j < 6; j++) {
+            for (let j = 0; j < 5; j++) {
                 foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
             }
 
@@ -64,7 +64,7 @@ function setup() {
             }
 
         } else if (i == 9) {
-            for (let j = 0; j < 5; j++) {
+            for (let j = 0; j < 4; j++) {
                 foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
             }
 
@@ -72,7 +72,7 @@ function setup() {
             foodImgs[i] = loadImage('images/foods/food' + i + '.png', clearCanvas);
         }
     }
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 9; i++) {
         inputImgs[i] = loadImage('images/inputs/input' + i + '.png', drawCaifan);
     }
 
