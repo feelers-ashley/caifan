@@ -9,7 +9,7 @@ let randomBtn, clearBtn, transferBtn;
 let emojiBtns = [];
 
 // transfer img must be multiple of 256
-const SIZE = 512;
+const SIZE = 256;
 
 function setup() {
     // create a 256x256 canvas
@@ -131,7 +131,9 @@ function clearCanvas() {
     ellipse(width / 2, height / 2, width);
     imageMode(CENTER);
     translate(0.55 * width, 0.7 * height);
-    image(foodImgs[10], 0, 0, 0.6 * SIZE, 0.6 * SIZE);
+    let riceImg = foodImgs[10];
+    riceImg.resize(0.6 * SIZE, 0.6 * SIZE);
+    image(riceImg, 0, 0);
     pop();
 }
 
@@ -145,6 +147,7 @@ function drawFood(foodNo) {
     push();
     let foodVer = foodImgs[foodNo][int(random(foodImgs[foodNo].length))];
     let foodSize = 0.4 * SIZE;
+    foodVer.resize(foodSize, foodSize)
     let foodPadL = width / 2 - 0.50 * width + foodSize / 2;
     let foodPadR = width / 2 + 0.50 * width - foodSize / 2;
     let foodPadT = height / 2 - 0.50 * width + foodSize / 2;
@@ -155,7 +158,7 @@ function drawFood(foodNo) {
     imageMode(CENTER);
     push();
     rotate(random(0, PI))
-    image(foodVer, 0, 0, foodSize, foodSize);
+    image(foodVer, 0, 0);
     pop();
     pop();
 }
