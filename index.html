@@ -18,21 +18,23 @@
           <img id="btn1" src="images/emojis/emoji1.png" width="70" height="70">
           <img id="btn2" src="images/emojis/emoji2.png" width="70" height="70">
           <img id="btn3" src="images/emojis/emoji3.png" width="70" height="70">
-          <img id="btn4" src="images/emojis/emoji4.png" width="70" height="70"><br/>
+          <img id="btn4" src="images/emojis/emoji4.png" width="70" height="70">
           <img id="btn5" src="images/emojis/emoji5.png" width="70" height="70">
           <img id="btn6" src="images/emojis/emoji6.png" width="70" height="70">
           <img id="btn7" src="images/emojis/emoji7.png" width="70" height="70">
           <img id="btn8" src="images/emojis/emoji8.png" width="70" height="70">
           <img id="btn9" src="images/emojis/emoji9.png" width="70" height="70">
         </div>
-        <div id="canvasContainer" style="padding-top: 10px"></div>
-        <div id="btnContainer" class="flex flex-space-between" style="padding-top: 10px">
+        <div id="boxContainer" style="display: inline-flex; flex-wrap: wrap">
+          <div id="canvasContainer" style="padding: 10px"></div>
+          <div id="output"  style="padding: 10px"></div>
+        </div>
+        <div id="btnContainer" class="flex flex-space-between">
           <button id="clearBtn" style="font-family: helvetica">Clear</button>
           <button id="randomBtn" style="font-family: helvetica">Random</button>
           <button id="transferBtn" style="font-family: helvetica">Cook</button>
         </div>
       </div>
-      <div id="output" style="padding-top: 10px"></div>
     </div>
     <script src="sketch.js"></script>
   </body> 

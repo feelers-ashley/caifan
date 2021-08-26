@@ -9,7 +9,7 @@ let randomBtn, clearBtn, transferBtn;
 let emojiBtns = [];
 
 // transfer img must be multiple of 256
-const SIZE = 256;
+const SIZE = 512;
 
 function setup() {
     // create a 256x256 canvas
