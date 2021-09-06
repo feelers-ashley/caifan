@@ -4,9 +4,17 @@
   "description": "",
   "main": "sketch.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sketch.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feelers-ashley/emoji2caifan.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/feelers-ashley/emoji2caifan/issues"
+  },
+  "homepage": "https://github.com/feelers-ashley/emoji2caifan#readme"
 }
