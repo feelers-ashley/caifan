@@ -5,7 +5,7 @@
   "main": "sketch.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node sketch.js"
+    "start": "node index.html"
   },
   "repository": {
     "type": "git",
