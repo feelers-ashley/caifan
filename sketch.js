@@ -193,6 +193,6 @@ async function transfer(pix2pix) {
         createImg(result.src).class('border-box').parent('output');
         statusMsg.html('~ done ~ <br/> click [clear] to build a new caifan <br/> click [random] for a random caifan');
     });
-
+    
     statusMsg.html('');
 }
