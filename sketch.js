@@ -165,7 +165,7 @@ function drawFood(foodNo) {
 
 function drawCaifan() {
     // initialise pix2pix method with pre-trained caifan model
-    ml5.pix2pix('models/caifan13_6.pict').ready.then((model) => {
+    ml5.pix2pix('models/caifan512.pict').ready.then((model) => {
         // show 'Model Loaded!' message
         statusMsg.html("click [cook] when you're <br/> happy with your caifan");
 
