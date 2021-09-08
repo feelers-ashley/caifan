@@ -9,11 +9,11 @@ let randomBtn, clearBtn, transferBtn;
 let emojiBtns = [];
 
 // transfer img must be multiple of 256
-const SIZE = 512;
+const SIZE = 256;
 
 function setup() {
     // create a 256x256 canvas
-    inputCanvas = createCanvas(SIZE, SIZE,WEBGL);
+    inputCanvas = createCanvas(SIZE, SIZE);
     inputCanvas.class('border-box').parent('canvasContainer');
 
     // load food / input imgs
