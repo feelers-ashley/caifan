@@ -9,7 +9,7 @@ let randomBtn, clearBtn, transferBtn;
 let emojiBtns = [];
 
 // transfer img must be multiple of 256
-const SIZE = 256;
+const SIZE = 512;
 
 function setup() {
     // create a 256x256 canvas
@@ -172,6 +172,7 @@ function drawCaifan() {
         // attach mousePressed event to the button
         transferBtn.mousePressed(function () {
             transfer(model);
+            return false;
         });
     })
 }
@@ -190,7 +191,7 @@ async function transfer(pix2pix) {
         // clear output container
         outputContainer.html('');
         // create img from result
-        createImg(result.src).size(512,512).class('border-box').parent('output');
+        createImg(result.src).size(512,512).class('border-box').parent('canvasContainer');
         statusMsg.html('~ done ~ <br/> click [clear] to build a new caifan <br/> click [random] for a random caifan');    
     });
     
