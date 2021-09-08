@@ -13,7 +13,7 @@ const SIZE = 512;
 
 function setup() {
     // create a 256x256 canvas
-    inputCanvas = createCanvas(SIZE, SIZE);
+    inputCanvas = createCanvas(SIZE, SIZE,WEBGL);
     inputCanvas.class('border-box').parent('canvasContainer');
 
     // load food / input imgs
@@ -171,13 +171,13 @@ function drawCaifan() {
 
         // attach mousePressed event to the button
         transferBtn.mousePressed(function () {
-            let resized = createGraphics(256,256);
-            //resized.class('border-box').parent('output');
-            resized.image(inputCanvas, 0,0);
-            resized.loadPixels();
-            clear();
-            image(resized, 0,0);
-            
+//            let resized = createGraphics(512,512,WEBGL);
+//            resized.class('border-box').parent('output');
+//            resized.image(inputCanvas, 0,0,256,256);
+//            resized.loadPixels();
+//            clear();
+//            image(resized, 0,0);
+            //createImg(resized).size(512,512).class('border-box').parent('output');
             transfer(model);
             return false;
         });
