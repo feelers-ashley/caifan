@@ -171,6 +171,10 @@ function drawCaifan() {
 
         // attach mousePressed event to the button
         transferBtn.mousePressed(function () {
+            let resized = createGraphics(512,512);
+            resized.image(inputCanvas, 0,0,512,512);
+            resized.loadPixels();
+            image(resized, 0,0);
             transfer(model);
             return false;
         });
@@ -184,6 +188,7 @@ async function transfer(pix2pix) {
     })
     await declareStaus;
     // select p5 canvas element (pix2pix requires canvas DOM element)
+   
     const canvasElement = select('canvas').elt;
 
     // apply pix2pix transformation
@@ -191,7 +196,7 @@ async function transfer(pix2pix) {
         // clear output container
         outputContainer.html('');
         // create img from result
-        createImg(result.src).size(512,512).class('border-box').parent('canvasContainer');
+        createImg(result.src).size(512,512).class('border-box').parent('output');
         statusMsg.html('~ done ~ <br/> click [clear] to build a new caifan <br/> click [random] for a random caifan');    
     });
     
