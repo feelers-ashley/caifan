@@ -171,7 +171,7 @@ function drawCaifan() {
 
         // attach mousePressed event to the button
         transferBtn.mousePressed(function () {
-            let resized = createGraphics(512,512);
+            let resized = createGraphics(256,256);
             //resized.class('border-box').parent('output');
             resized.image(inputCanvas, 0,0);
             resized.loadPixels();
