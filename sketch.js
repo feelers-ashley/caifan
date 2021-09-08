@@ -4,7 +4,7 @@ Feelers-Ashley / Emoji2Caifan
 
 let inputImgs = [];
 let foodImgs = [];
-let inputCanvas, outputContainer, statusMsg;
+let inputCanvas, outputContainer, statusMsg, buffer;
 let randomBtn, clearBtn, transferBtn;
 let emojiBtns = [];
 
@@ -172,9 +172,12 @@ function drawCaifan() {
         // attach mousePressed event to the button
         transferBtn.mousePressed(function () {
             let resized = createGraphics(512,512);
-            resized.image(inputCanvas, 0,0,512,512);
+            //resized.class('border-box').parent('output');
+            resized.image(inputCanvas, 0,0);
             resized.loadPixels();
+            clear();
             image(resized, 0,0);
+            
             transfer(model);
             return false;
         });
