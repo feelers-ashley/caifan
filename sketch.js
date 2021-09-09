@@ -1,6 +1,8 @@
-/*
-Feelers-Ashley / Emoji2Caifan 
-*/
+/* ===
+Build-A-Caifan (Mobile)
+A project by Feelers.
+This uses a pre-trained model on 100 Caifan images from @caipng2.50.
+=== */
 
 let inputImgs = [];
 let foodImgs = [];
@@ -9,7 +11,7 @@ let randomBtn, clearBtn, transferBtn;
 let emojiBtns = [];
 
 // transfer img must be multiple of 256
-const SIZE = 256;
+const SIZE = 512;
 
 function setup() {
     // create a 256x256 canvas
@@ -165,19 +167,12 @@ function drawFood(foodNo) {
 
 function drawCaifan() {
     // initialise pix2pix method with pre-trained caifan model
-    ml5.pix2pix('models/caifan512.pict').ready.then((model) => {
+    ml5.pix2pix('models/caifanS_BtoA.pict').ready.then((model) => {
         // show 'Model Loaded!' message
         statusMsg.html("click [cook] when you're <br/> happy with your caifan");
 
         // attach mousePressed event to the button
         transferBtn.mousePressed(function () {
-//            let resized = createGraphics(512,512,WEBGL);
-//            resized.class('border-box').parent('output');
-//            resized.image(inputCanvas, 0,0,256,256);
-//            resized.loadPixels();
-//            clear();
-//            image(resized, 0,0);
-            //createImg(resized).size(512,512).class('border-box').parent('output');
             transfer(model);
             return false;
         });
@@ -191,7 +186,6 @@ async function transfer(pix2pix) {
     })
     await declareStaus;
     // select p5 canvas element (pix2pix requires canvas DOM element)
-   
     const canvasElement = select('canvas').elt;
 
     // apply pix2pix transformation
