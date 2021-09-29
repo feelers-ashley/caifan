@@ -1,84 +1,80 @@
 /* ===
-Build-A-Caifan (Mobile)
+~ Build-A-Caifan ~
 A project by Feelers.
-This uses a pre-trained model on 100 Caifan images from @caipng2.50.
+https://feelers-feelers.com/
+This uses a pre-trained model on 100 caifan images from @caipng2.50.
+https://www.instagram.com/caipng2.50/
+
+Build-A-Caifan is an imaginary online caifan stall which digitally replicates the experience of picking out dishes at a stall through clicking on food emojis. The dishes selected are reflected real-time as illustrations on a plate before being digitally "cooked" using machine learning to present a final realistic-looking piping hot plate of ready to eat caifan.
 === */
 
 let inputImgs = [];
 let foodImgs = [];
-let inputCanvas, outputContainer, statusMsg, buffer;
+let inputCanvas, outputContainer, statusMsg;
 let randomBtn, clearBtn, transferBtn;
 let emojiBtns = [];
 
-// transfer img must be multiple of 256
 const SIZE = 512;
 
 function setup() {
-    // create a 256x256 canvas
     inputCanvas = createCanvas(SIZE, SIZE);
     inputCanvas.class('border-box').parent('canvasContainer');
 
-    // load food / input imgs
+    ////////// LOAD FOOD + INPUT IMAGES //////////
     for (let i = 0; i < 11; i++) {
+        let fpath = 'caifan-assets/images/foods/food';
         foodImgs[i] = [];
         if (i == 0) {
             for (let j = 0; j < 3; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
         } else if (i == 1) {
             for (let j = 0; j < 4; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
-
         } else if (i == 2) {
             for (let j = 0; j < 2; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
-
         } else if (i == 3) {
             for (let j = 0; j < 3; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
-
         } else if (i == 4) {
             for (let j = 0; j < 3; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
-
         } else if (i == 5) {
             for (let j = 0; j < 4; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
-
         } else if (i == 6) {
             for (let j = 0; j < 4; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
-
         } else if (i == 7) {
             for (let j = 0; j < 5; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
-
         } else if (i == 8) {
             for (let j = 0; j < 4; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
-
         } else if (i == 9) {
             for (let j = 0; j < 4; j++) {
-                foodImgs[i][j] = loadImage('images/foods/food' + i + '-' + j + '.png');
+                foodImgs[i][j] = loadImage(fpath + i + '-' + j + '.png');
             }
-
         } else if (i == 10) {
-            foodImgs[i] = loadImage('images/foods/food' + i + '.png', clearCanvas);
+            foodImgs[i] = loadImage(fpath + i + '.png', clearCanvas);
         }
     }
+
     for (let i = 0; i < 9; i++) {
-        inputImgs[i] = loadImage('images/inputs/input' + i + '.png', drawCaifan);
+        let ipath = 'caifan-assets/images/inputs/input';
+        inputImgs[i] = loadImage(ipath + i + '.png', drawCaifan);
     }
 
-    // selcect containers / elements
+    ////////// ASSIGN CONTAINERS + BUTTONS //////////
     outputContainer = select('#output');
     statusMsg = select('#status');
     randomBtn = select('#randomBtn');
@@ -95,7 +91,6 @@ function setup() {
     let btn8 = select('#btn8');
     let btn9 = select('#btn9');
 
-    // add p5 elements to emoji button array
     emojiBtns.push(btn0);
     emojiBtns.push(btn1);
     emojiBtns.push(btn2);
@@ -107,24 +102,25 @@ function setup() {
     emojiBtns.push(btn8);
     emojiBtns.push(btn9);
 
-    // attach mousePressed event to buttons
     randomBtn.mousePressed(function () {
         drawImage();
     });
+
     clearBtn.mousePressed(function () {
         clearCanvas();
     });
+
     for (let i = 0; i < 10; i++) {
         emojiBtns[i].mousePressed(function () {
             drawFood(i);
         })
     }
 
-    // set stroke to black
     stroke(0);
     pixelDensity(1);
 }
 
+////////// DRAW RESET EMPTY PLATE //////////
 function clearCanvas() {
     background(97, 103, 115);
     randomSeed(216);
@@ -139,17 +135,19 @@ function clearCanvas() {
     pop();
 }
 
+////////// DRAW RANDOM CAIFAN PLATES //////////
 function drawImage() {
     let inputImg = inputImgs[int(random(inputImgs.length))];
     inputImg.resize(SIZE, SIZE);
     image(inputImg, 0, 0);
 }
 
+////////// DRAW CAIFAN INGREDIENTS //////////
 function drawFood(foodNo) {
     push();
     let foodVer = foodImgs[foodNo][int(random(foodImgs[foodNo].length))];
     let foodSize = 0.4 * SIZE;
-    foodVer.resize(foodSize, foodSize)
+    foodVer.resize(foodSize, foodSize);
     let foodPadL = width / 2 - 0.50 * width + foodSize / 2;
     let foodPadR = width / 2 + 0.50 * width - foodSize / 2;
     let foodPadT = height / 2 - 0.50 * width + foodSize / 2;
@@ -159,43 +157,36 @@ function drawFood(foodNo) {
     translate(foodX, foodY);
     imageMode(CENTER);
     push();
-    rotate(random(0, PI))
+    rotate(random(0, PI));
     image(foodVer, 0, 0);
     pop();
     pop();
 }
 
+////////// LOAD PRE-TRAINED CAIFAN MODEL //////////
 function drawCaifan() {
-    // initialise pix2pix method with pre-trained caifan model
-    ml5.pix2pix('models/caifanS_BtoA.pict').ready.then((model) => {
-        // show 'Model Loaded!' message
+    let mpath = 'caifan-assets/models/caifan_BtoA.pict';
+    ml5.pix2pix(mpath).ready.then((model) => {
         statusMsg.html("click [cook] when you're <br/> happy with your caifan");
-
-        // attach mousePressed event to the button
         transferBtn.mousePressed(function () {
             transfer(model);
             return false;
         });
-    })
+    });
 }
 
+////////// APPLY STYLE TRANSFER //////////
 async function transfer(pix2pix) {
     declareStaus = new Promise((resolve, reject) => {
         statusMsg.html('... cooking your caifan ... <br/> ... please wait ...');
         setTimeout(resolve, 10)
-    })
-    await declareStaus;
-    // select p5 canvas element (pix2pix requires canvas DOM element)
-    const canvasElement = select('canvas').elt;
-
-    // apply pix2pix transformation
-    pix2pix.transfer(canvasElement).then((result) => {
-        // clear output container
-        outputContainer.html('');
-        // create img from result
-        createImg(result.src).size(512,512).class('border-box').parent('output');
-        statusMsg.html('~ done ~ <br/> click [clear] to build a new caifan <br/> click [random] for a random caifan');    
     });
-    
+    await declareStaus;
+    const canvasElement = select('canvas').elt;
+    pix2pix.transfer(canvasElement).then((result) => {
+        outputContainer.html('');
+        createImg(result.src).class('border-box').parent('output');
+        statusMsg.html('~ done ~ <br/> click [clear] to build a new caifan <br/> click [random] for a random caifan');
+    });
     statusMsg.html('');
 }
